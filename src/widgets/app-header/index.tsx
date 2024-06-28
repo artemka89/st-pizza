@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { ThemeSwitcher } from '@/features/theme';
+
 import { CartButton } from './ui/cart-button';
 import { HeaderLayout } from './ui/header-layout';
 import { Logo } from './ui/logo';
@@ -18,7 +20,12 @@ export const AppHeader: FC<AppHeaderProps> = ({ variant }) => {
       logo={<Logo />}
       nav={<MainNav />}
       profile={isProfile && <Profile />}
-      actions={<>{isProfile && <CartButton />}</>}
+      actions={
+        <>
+          {isProfile && <CartButton />}
+          <ThemeSwitcher />
+        </>
+      }
     />
   );
 };

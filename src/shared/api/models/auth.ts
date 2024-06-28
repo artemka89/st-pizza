@@ -27,7 +27,7 @@ export const authApi = {
     return session;
   },
 
-  signOut: async (sessionId = 'current'): Promise<void> => {
+  deleteSession: async (sessionId = 'current'): Promise<void> => {
     await account.deleteSession(sessionId);
     return;
   },

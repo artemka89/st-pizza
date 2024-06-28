@@ -3,9 +3,8 @@ import { Outlet } from 'react-router-dom';
 
 export const RootLayout: FC = () => {
   return (
-    <div className='flex w-full flex-col bg-background text-foreground'>
+    <div className='w-full bg-background text-foreground'>
       <Outlet />
-      <footer>Footer</footer>
     </div>
   );
 };

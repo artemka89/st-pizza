@@ -6,7 +6,6 @@ export const AuthLayout: FC = () => {
     <div className='container flex min-h-screen grow flex-col'>
       <header>Header</header>
       <Outlet />
-      <footer>Footer</footer>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { RouteObject } from 'react-router-dom';
 
 import { AuthLayout } from '@/app/layouts/auth';
 import { ConfirmEmailPage } from '@/pages/confirm-email-page';
+import { VerifyRequestPage } from '@/pages/verify-request-page';
 import { ROUTES } from '@/shared/constants';
 
 export const authRoutes: RouteObject = {
@@ -17,7 +18,7 @@ export const authRoutes: RouteObject = {
     },
     {
       path: ROUTES.VERIFY,
-      element: <div>Verify</div>,
+      element: <VerifyRequestPage />,
     },
     {
       path: ROUTES.CONFIRM,

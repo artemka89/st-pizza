@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { AppProvider } from './providers/app-provider.tsx';
-import App from './App.tsx';
+import { AppRouter } from './providers/app-router.tsx';
 
 import './styles/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AppProvider>
-      <App />
+      <AppRouter />
     </AppProvider>
   </React.StrictMode>,
 );

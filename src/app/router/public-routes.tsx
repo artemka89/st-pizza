@@ -11,5 +11,9 @@ export const publicRoutes: RouteObject = {
       index: true,
       element: <HomePage />,
     },
+    {
+      path: '/menu',
+      element: <div>menu</div>,
+    },
   ],
 };

@@ -1,12 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import App from '../App';
+import { RootLayout } from '../layouts/root';
+
+import { authRoutes } from './auth-routes';
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <RootLayout />,
     errorElement: <div>Произошла ошибка</div>,
+    children: [authRoutes],
   },
   {
     path: '*',

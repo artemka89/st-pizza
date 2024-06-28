@@ -1,9 +1,7 @@
 import { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation } from '@tanstack/react-query';
 
-import { authApi } from '@/shared/api/models/auth';
 import { cn } from '@/shared/lib/cn';
 import { Button } from '@/shared/ui/button';
 import {
@@ -16,15 +14,14 @@ import {
 import { Input } from '@/shared/ui/input';
 
 import { SignInFormSchema, SignInFormType } from '../model/sign-in-form-schema';
+import { useCreateMagicUrl } from '../model/use-create-magic-url';
 
 interface LoginFormProps {
   className?: string;
 }
 
 export const SignInForm: FC<LoginFormProps> = ({ className }) => {
-  const magicUrl = useMutation({
-    mutationFn: (email: string) => authApi.createMagicUrlToken(email),
-  });
+  const magicUrl = useCreateMagicUrl();
 
   const form = useForm<SignInFormType>({
     mode: 'all',

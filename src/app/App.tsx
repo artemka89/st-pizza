@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { SignInForm } from '@/features/auth';
 import { Button } from '@/shared/ui/button';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <div>
         <Button onClick={onClickButton}>Click me</Button>
         {show && <div>Button is clicked</div>}
+        <SignInForm />
       </div>
     </>
   );

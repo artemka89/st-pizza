@@ -1,7 +1,6 @@
 import { RouteObject } from 'react-router-dom';
 
 import { PrivateLayout } from '@/app/layouts/private';
-import { PageLayout } from '@/shared/ui/layouts/page-layout';
 
 export const privateRoutes: RouteObject = {
   path: '',
@@ -9,11 +8,10 @@ export const privateRoutes: RouteObject = {
   children: [
     {
       path: '/profile',
-      element: (
-        <PageLayout>
-          <div>Профиль</div>
-        </PageLayout>
-      ),
+      lazy: async () => {
+        const { ProfilePage } = await import('@/pages/profile-page');
+        return { Component: ProfilePage };
+      },
     },
   ],
 };

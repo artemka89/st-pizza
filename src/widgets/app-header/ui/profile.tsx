@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { LogOut, Settings, User } from 'lucide-react';
 
-import { useGetUser } from '@/entities/user';
+import { ProfileAvatar, useGetUser } from '@/entities/user';
 import { useSignOut } from '@/features/auth';
 import { SignInButton } from '@/features/auth';
 import { cn } from '@/shared/lib/cn';
@@ -16,8 +16,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/shared/ui/dropdown-menu';
-
-import { ProfileAvatar } from './profile-avatar';
 
 interface ProfileProps {
   className?: string;

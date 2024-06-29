@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.44.1",
+    "@tanstack/react-query-devtools": "^5.48.0",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
     "@types/node": "^20.14.2",

@@ -5,7 +5,7 @@ import { useSignIn } from './use-sign-in';
 
 export function useConfirmEmail() {
   const [searchParams] = useSearchParams();
-  const { mutate, isPending, isError, status } = useSignIn();
+  const signIn = useSignIn();
 
   const hasMounted = useRef(false);
 
@@ -14,11 +14,11 @@ export function useConfirmEmail() {
       const userId = searchParams.get('userId');
       const secret = searchParams.get('secret');
       if (userId && secret) {
-        mutate({ userId, secret });
+        signIn.mutate({ userId, secret });
       }
       hasMounted.current = true;
     }
-  }, [mutate, searchParams]);
+  }, [searchParams, signIn]);
 
-  return { isPending, isError, status };
+  return { status: signIn.status };
 }

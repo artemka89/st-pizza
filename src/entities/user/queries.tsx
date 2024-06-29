@@ -6,14 +6,17 @@ import { mapUser } from './lib/map-user';
 
 const getUserKey = 'user';
 export function useGetUser() {
-  const cookieFallback = localStorage.getItem('cookieFallback');
   return useQuery({
     queryKey: [getUserKey],
     queryFn: () => userApi.getUser(),
     select: mapUser,
     retry: 0,
     staleTime: 5 * 60 * 1000,
-    enabled: !!cookieFallback && cookieFallback !== '[]',
+    enabled: () => {
+      const cookieFallback = localStorage.getItem('cookieFallback');
+      if (cookieFallback && cookieFallback === '[]') return false;
+      return true;
+    },
   });
 }
 

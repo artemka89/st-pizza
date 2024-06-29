@@ -19,6 +19,10 @@ export const navItems: INavItem[] = [
     title: 'Меню',
     path: '/menu',
   },
+  {
+    title: 'Войти',
+    path: ROUTES.SIGN_IN,
+  },
 ];
 
 interface MainNavProps {

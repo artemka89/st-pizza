@@ -31,7 +31,7 @@ export const Profile: FC<ProfileProps> = ({ className }) => {
     signOut.mutate();
   };
 
-  if (user.isPending)
+  if (user.isPending && user.fetchStatus === 'fetching')
     return (
       <div className='flex items-center'>
         <Button

@@ -14,9 +14,8 @@ export function useSignIn() {
         userId,
         secret,
       }),
-
     retry: 0,
-    onError: (error) => console.log(error),
+    onError: (error) => error,
     onSuccess: () => {
       navigate(ROUTES.HOME);
     },

@@ -13,7 +13,7 @@ export function useGetUser() {
     staleTime: 5 * 60 * 1000,
     enabled: () => {
       const cookieFallback = localStorage.getItem('cookieFallback');
-      if (cookieFallback && cookieFallback === '[]') return false;
+      if (!cookieFallback || cookieFallback === '[]') return false;
       return true;
     },
   });

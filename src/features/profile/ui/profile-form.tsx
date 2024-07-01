@@ -45,8 +45,9 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSuccess]);
 
-  const onSubmitHandler: SubmitHandler<ProfileFormType> = (data) => {
-    createUpdateProfile({ id: profile.id, ...data });
+  const onSubmitHandler: SubmitHandler<ProfileFormType> = async (data) => {
+    await createUpdateProfile({ id: profile.id, ...data });
+    resetForm();
   };
 
   const avatarUrl = getAvatarUrl(form.getValues('imageId'));
@@ -190,7 +191,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
             className='w-full'>
             Сохранить
           </Button>
-          {form.formState.isDirty && (
+          {!isLoading && form.formState.isDirty && (
             <Button type='button' onClick={resetForm}>
               <X />
             </Button>

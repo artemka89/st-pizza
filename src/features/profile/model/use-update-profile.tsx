@@ -32,6 +32,17 @@ function useUpdateUserNameMutation() {
   });
 }
 
+function useUpdateProfilePreference() {
+  const invalidateUser = useInvalidateUser();
+  return useMutation({
+    mutationKey: ['update-preference'],
+    mutationFn: () => userApi.updateUserPreferences({ isProfile: true }),
+    onSettled: async () => {
+      await invalidateUser();
+    },
+  });
+}
+
 export function useUpdateUserProfile() {
   const user = useGetUser();
 
@@ -39,6 +50,7 @@ export function useUpdateUserProfile() {
   const updateProfile = useUpdateProfileMutation();
 
   const updateUser = useUpdateUserNameMutation();
+  const updatePreference = useUpdateProfilePreference();
 
   const isLoading = checkForTrue(
     updateUser.isPending,
@@ -46,13 +58,14 @@ export function useUpdateUserProfile() {
     updateProfile.isPending,
   );
 
-  const createUpdateProfile = (data: UserProfile) => {
+  const createUpdateProfile = async (data: UserProfile) => {
     if (user.data?.isProfile) {
-      updateUser.mutate(data.name);
-      updateProfile.mutate(data);
+      await updateUser.mutateAsync(data.name);
+      await updateProfile.mutateAsync(data);
     } else {
-      updateUser.mutate(data.name);
-      createProfile.mutate(data);
+      await updateUser.mutateAsync(data.name);
+      await createProfile.mutateAsync(data);
+      await updatePreference.mutateAsync();
     }
   };
 

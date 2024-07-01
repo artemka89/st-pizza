@@ -13,8 +13,9 @@ import {
 } from '@/shared/ui/form';
 import { Input } from '@/shared/ui/input';
 
+import { getAvatarUrl } from '../lib/get-avatar-url';
 import { getDefaultValues } from '../lib/get-default-values';
-import { ProfileFormSchema, ProfileFormType } from '../model/form-schema';
+import { ProfileFormSchema, ProfileFormType } from '../model/profile-schema';
 import { UserProfile } from '../model/types';
 
 import { AvatarField } from './avatar-field';
@@ -50,6 +51,9 @@ export const ProfileForm: FC<ProfileFormProps> = ({
   const onSubmitHandler: SubmitHandler<ProfileFormType> = (data) => {
     updateData({ id: profile.id, ...data });
   };
+
+  const avatarUrl = getAvatarUrl(form.getValues('imageId'));
+
   return (
     <Form {...form}>
       <form
@@ -64,9 +68,9 @@ export const ProfileForm: FC<ProfileFormProps> = ({
                 <FormLabel>Аватарка</FormLabel>
                 <FormControl>
                   <AvatarField
-                    value={'imageUrl'}
-                    name={''}
-                    email={''}
+                    value={avatarUrl}
+                    name={profile.name ?? ''}
+                    email={profile.email ?? ''}
                     onChange={field.onChange}
                   />
                 </FormControl>

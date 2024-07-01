@@ -1,4 +1,4 @@
-import { ProfileFormType } from '../model/form-schema';
+import { ProfileFormType } from '../model/profile-schema';
 
 export const getDefaultValues = (profile: ProfileFormType) => ({
   name: profile.name,

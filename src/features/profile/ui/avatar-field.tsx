@@ -5,6 +5,8 @@ import { Button } from '@/shared/ui/button';
 import { selectFile } from '@/shared/ui/file';
 import { Spinner } from '@/shared/ui/spinner';
 
+import { useCreateAvatar } from '../model/use-create-avatar';
+
 interface AvatarFieldProps {
   value?: string;
   name: string;
@@ -18,15 +20,17 @@ export const AvatarField: FC<AvatarFieldProps> = ({
   email,
   onChange,
 }) => {
+  const { mutate, data, isPending } = useCreateAvatar();
+
   const handleFileSelect = async () => {
     const file = await selectFile('image/*');
-    file;
+    mutate(file);
   };
 
   useEffect(() => {
-    onChange('avatarId');
+    onChange(data?.$id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, ['avatarId']);
+  }, [data?.$id]);
 
   return (
     <Button
@@ -34,7 +38,7 @@ export const AvatarField: FC<AvatarFieldProps> = ({
       className='relative block h-[100px] w-[100px] rounded-full p-0.5'
       type='button'
       onClick={handleFileSelect}>
-      {false && (
+      {isPending && (
         <div className='absolute inset-0 z-10 flex items-center justify-center'>
           <Spinner className='h-10 w-10' aria-label='Загрузка новой аватарки' />
         </div>

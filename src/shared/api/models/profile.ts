@@ -76,4 +76,14 @@ export const profileApi = {
     );
     return AvatarDtoSchema.parse(image);
   },
+
+  getAvatarUrl: (id: string, width = 80, height = 80) => {
+    const url = storage.getFilePreview(
+      APPWRITE.AVATARS_BUCKET_ID,
+      id,
+      width,
+      height,
+    );
+    return url;
+  },
 };

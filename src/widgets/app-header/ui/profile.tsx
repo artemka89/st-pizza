@@ -2,7 +2,8 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { LogOut, Settings, User } from 'lucide-react';
 
-import { ProfileAvatar, useGetUser } from '@/entities/user';
+import { ProfileAvatar } from '@/entities/profile';
+import { useGetUser } from '@/entities/user';
 import { useSignOut } from '@/features/auth';
 import { SignInButton } from '@/features/auth';
 import { cn } from '@/shared/lib/cn';

@@ -15,7 +15,7 @@ const UserDtoSchema = z.object({
   }),
 });
 
-type UserDto = z.infer<typeof UserDtoSchema>;
+export type UserDto = z.infer<typeof UserDtoSchema>;
 
 export const userApi = {
   getUser: async (): Promise<UserDto> => {
@@ -25,5 +25,9 @@ export const userApi = {
   updateUserPreferences: async (data: UserPreference) => {
     await account.updatePrefs(data);
     return;
+  },
+  updateUserName: async (name: string): Promise<UserDto> => {
+    const user = await account.updateName(name);
+    return user;
   },
 };

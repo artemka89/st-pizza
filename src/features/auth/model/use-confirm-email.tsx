@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { useSignIn } from './use-sign-in';
+import { useSignInMutation } from './use-sign-in';
 
 export function useConfirmEmail() {
   const [searchParams] = useSearchParams();
-  const signIn = useSignIn();
+  const signIn = useSignInMutation();
 
   const hasMounted = useRef(false);
 

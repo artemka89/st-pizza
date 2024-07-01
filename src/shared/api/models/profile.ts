@@ -10,7 +10,7 @@ const ProfileDtoSchema = z.object({
   city: z.string(),
   street: z.string(),
 });
-type ProfileDto = z.infer<typeof ProfileDtoSchema>;
+export type ProfileDto = z.infer<typeof ProfileDtoSchema>;
 
 const AvatarDtoSchema = z.object({
   $id: z.string(),

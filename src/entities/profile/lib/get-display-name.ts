@@ -1,4 +1,4 @@
-export const getUserDisplayName = (name: string) => {
+export const getDisplayName = (name: string) => {
   const [a, b] = name.split('@')[0].split(/\.|\s|-|_/);
 
   if (!b) {

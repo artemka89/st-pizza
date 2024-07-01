@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 
-import { ProfileAvatar } from '@/entities/user';
+import { ProfileAvatar } from '@/entities/profile';
 import { Button } from '@/shared/ui/button';
 import { selectFile } from '@/shared/ui/file';
 import { Spinner } from '@/shared/ui/spinner';

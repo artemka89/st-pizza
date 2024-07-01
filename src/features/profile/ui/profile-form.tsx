@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { X } from 'lucide-react';
 
+import { cn } from '@/shared/lib/cn';
 import { Button } from '@/shared/ui/button';
 import {
   Form,
@@ -16,23 +17,19 @@ import { Input } from '@/shared/ui/input';
 import { getAvatarUrl } from '../lib/get-avatar-url';
 import { getDefaultValues } from '../lib/get-default-values';
 import { ProfileFormSchema, ProfileFormType } from '../model/profile-schema';
-import { UserProfile } from '../model/types';
+import { useGetUserProfile } from '../model/use-get-user-profile';
+import { useUpdateUserProfile } from '../model/use-update-profile';
 
 import { AvatarField } from './avatar-field';
 
 interface ProfileFormProps {
-  profile: UserProfile;
-  isLoading: boolean;
-  isSuccess: boolean;
-  updateData: (data: UserProfile) => void;
+  className?: string;
 }
 
-export const ProfileForm: FC<ProfileFormProps> = ({
-  profile,
-  isLoading,
-  isSuccess,
-  updateData,
-}) => {
+export const ProfileForm: FC<ProfileFormProps> = ({ className }) => {
+  const { profile, isSuccess } = useGetUserProfile();
+  const { createUpdateProfile, isLoading } = useUpdateUserProfile();
+
   const form = useForm<ProfileFormType>({
     mode: 'onChange',
     defaultValues: getDefaultValues(profile),
@@ -49,7 +46,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
   }, [isSuccess]);
 
   const onSubmitHandler: SubmitHandler<ProfileFormType> = (data) => {
-    updateData({ id: profile.id, ...data });
+    createUpdateProfile({ id: profile.id, ...data });
   };
 
   const avatarUrl = getAvatarUrl(form.getValues('imageId'));
@@ -57,7 +54,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
   return (
     <Form {...form}>
       <form
-        className='flex w-full flex-col gap-3'
+        className={cn('flex w-full flex-col gap-3', className)}
         onSubmit={form.handleSubmit(onSubmitHandler)}>
         <div className='flex gap-5'>
           <FormField

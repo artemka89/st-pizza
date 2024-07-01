@@ -1,13 +1,16 @@
 import { useMutation } from '@tanstack/react-query';
 
 import { useInvalidateProfile } from '@/entities/profile';
-import { useInvalidateUser } from '@/entities/user';
+import { useGetUser, useInvalidateUser } from '@/entities/user';
 import { profileApi } from '@/shared/api/models/profile';
 import { userApi } from '@/shared/api/models/user';
 
-import { UpdateProfile, UserProfile } from './types';
+import { checkForTrue } from '../lib/check-for-true';
 
-export function useUpdateProfileMutation() {
+import { UpdateProfile, UserProfile } from './types';
+import { useCreateProfileMutation } from './use-create-profile';
+
+function useUpdateProfileMutation() {
   const invalidateProfile = useInvalidateProfile();
   return useMutation({
     mutationKey: ['update-profile'],
@@ -18,7 +21,7 @@ export function useUpdateProfileMutation() {
   });
 }
 
-export function useUpdateUserNameMutation() {
+function useUpdateUserNameMutation() {
   const invalidateUser = useInvalidateUser();
   return useMutation({
     mutationKey: ['update-user-name'],
@@ -30,18 +33,31 @@ export function useUpdateUserNameMutation() {
 }
 
 export function useUpdateUserProfile() {
-  const profile = useUpdateProfileMutation();
-  const user = useUpdateUserNameMutation();
+  const user = useGetUser();
 
-  const updateProfile = (data: UserProfile) => {
-    user.mutate(data.name);
-    profile.mutate(data);
+  const createProfile = useCreateProfileMutation();
+  const updateProfile = useUpdateProfileMutation();
+
+  const updateUser = useUpdateUserNameMutation();
+
+  const isLoading = checkForTrue(
+    updateUser.isPending,
+    createProfile.isPending,
+    updateProfile.isPending,
+  );
+
+  const createUpdateProfile = (data: UserProfile) => {
+    if (user.data?.isProfile) {
+      updateUser.mutate(data.name);
+      updateProfile.mutate(data);
+    } else {
+      updateUser.mutate(data.name);
+      createProfile.mutate(data);
+    }
   };
 
-  const isLoading = profile.isPending ?? user.isPending;
-
   return {
-    updateProfile,
+    createUpdateProfile,
     isLoading,
   };
 }

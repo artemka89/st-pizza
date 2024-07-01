@@ -16,7 +16,7 @@ export function useGetUserProfile(): {
 
   return {
     profile: {
-      id: profile?.data ? profile.data.id : '',
+      id: user?.data ? user.data.id : '',
       name: user?.data ? user.data.name : '',
       email: user?.data ? user.data.email : '',
       city: profile?.data ? profile.data.city : '',

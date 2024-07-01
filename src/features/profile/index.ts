@@ -1,1 +1,1 @@
-export { EditableProfile } from './ui/editable-profile';
+export { ProfileForm } from './ui/profile-form';

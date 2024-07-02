@@ -3,16 +3,23 @@ import { Link } from 'react-router-dom';
 
 import { cn } from '@/shared/lib/cn';
 
-import { Product } from '../model/types';
+type Product = {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+};
 
-interface ProductCardProps {
+interface ProductCardLayoutProps {
   productItem: Product;
+  imageUrl: string;
   actions?: React.ReactNode;
   className?: string;
 }
 
-export const ProductCard: FC<ProductCardProps> = ({
+export const ProductCardLayout: FC<ProductCardLayoutProps> = ({
   productItem,
+  imageUrl,
   actions,
   className,
 }) => {
@@ -25,11 +32,7 @@ export const ProductCard: FC<ProductCardProps> = ({
         className,
       )}>
       <div className='flex size-52 items-center justify-center'>
-        <img
-          src='https://cloud.appwrite.io/v1/storage/buckets/pizzas/files/667522b700108c0181bd/view?project=my-pizza-dev&mode=admin'
-          className='size-full'
-          alt={productItem.name}
-        />
+        <img src={imageUrl} className='size-full' alt={productItem.name} />
       </div>
       <Link
         to={pathToProduct}

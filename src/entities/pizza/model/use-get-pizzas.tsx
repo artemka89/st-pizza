@@ -1,0 +1,12 @@
+import { useQuery } from '@tanstack/react-query';
+
+import { mapPizza } from '../lib/map-pizza';
+import { getPizzasQuery } from '../queries';
+
+export function useGetPizzas(category: string | void) {
+  return useQuery({
+    ...getPizzasQuery(category),
+    select: (data) => data.map(mapPizza),
+    staleTime: 5 * 1000 * 60,
+  });
+}

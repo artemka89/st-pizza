@@ -12,7 +12,7 @@ type Product = {
 
 interface ProductCardLayoutProps {
   productItem: Product;
-  imageUrl: string;
+  imageUrl: () => URL;
   actions?: React.ReactNode;
   className?: string;
 }
@@ -24,6 +24,7 @@ export const ProductCardLayout: FC<ProductCardLayoutProps> = ({
   className,
 }) => {
   const pathToProduct = `${productItem.category}/${productItem.id}`;
+  const productImageUrl = imageUrl().toString();
 
   return (
     <div
@@ -32,11 +33,15 @@ export const ProductCardLayout: FC<ProductCardLayoutProps> = ({
         className,
       )}>
       <div className='flex size-52 items-center justify-center'>
-        <img src={imageUrl} className='size-full' alt={productItem.name} />
+        <img
+          src={productImageUrl}
+          className='size-full'
+          alt={productItem.name}
+        />
       </div>
       <Link
         to={pathToProduct}
-        className='relative text-xl font-semibold text-card-foreground before:absolute before:-bottom-[2px] before:left-0 before:right-0 before:h-[2px] before:bg-primary before:opacity-0 hover:before:opacity-100'>
+        className='relative text-xl font-semibold text-card-foreground before:absolute before:-bottom-[2px] before:left-0 before:right-0 before:h-[2px] before:bg-primary before:opacity-0 before:transition-opacity hover:before:opacity-100'>
         {productItem.name}
       </Link>
 

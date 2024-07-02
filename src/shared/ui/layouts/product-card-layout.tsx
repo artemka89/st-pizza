@@ -43,10 +43,7 @@ export const ProductCardLayout: FC<ProductCardLayoutProps> = ({
       <p className='line-clamp-3 flex-1 text-center text-sm text-muted-foreground'>
         {productItem.description}
       </p>
-
-      <div className='flex w-full items-center justify-between font-medium'>
-        {actions}
-      </div>
+      {actions}
     </div>
   );
 };

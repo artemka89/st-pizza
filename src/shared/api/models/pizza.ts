@@ -30,7 +30,7 @@ const PizzaSchemaDto = z.object({
 export type PizzaDto = z.infer<typeof PizzaSchemaDto>;
 
 export const pizzaApi = {
-  getPizzas: async (category: string | void): Promise<PizzaDto[]> => {
+  getPizzas: async (category: string): Promise<PizzaDto[]> => {
     const pizzas = await databases.listDocuments(
       APPWRITE.DATABASE_ID,
       APPWRITE.PIZZAS_COLLECTION_ID,

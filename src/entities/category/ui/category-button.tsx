@@ -7,24 +7,25 @@ import { PizzaCategory } from '../model/types';
 
 interface CategoryButtonProps {
   category: PizzaCategory;
-  activeCategory: PizzaCategory;
-  setActiveCategory: (category: PizzaCategory) => void;
+  activeCategoryId: string;
+  setActiveCategoryId: (id: string) => void;
   className?: string;
 }
 
 export const CategoryButton: FC<CategoryButtonProps> = ({
   category,
-  activeCategory,
-  setActiveCategory,
+  activeCategoryId,
+  setActiveCategoryId,
   className,
 }) => {
-  const isActive = category.id === activeCategory.id;
+  const isActive = activeCategoryId === category.id;
 
   return (
     <Button
-      onClick={() => setActiveCategory(category)}
+      onClick={() => setActiveCategoryId(category.id)}
       variant={isActive ? 'default' : 'outline'}
       className={cn(
+        'min-w-[140px]',
         {
           ['cursor-default border border-transparent hover:bg-primary']:
             isActive,

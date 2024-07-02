@@ -18,7 +18,7 @@ import { getAvatarUrl } from '../lib/get-avatar-url';
 import { getDefaultValues } from '../lib/get-default-values';
 import { ProfileFormSchema, ProfileFormType } from '../model/profile-schema';
 import { useGetUserProfile } from '../model/use-get-user-profile';
-import { useUpdateUserProfile } from '../model/use-update-profile';
+import { useUpdateUserProfile } from '../model/use-update-user-profile';
 
 import { AvatarField } from './avatar-field';
 

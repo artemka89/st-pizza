@@ -5,7 +5,7 @@ import { Button } from '@/shared/ui/button';
 import { selectFile } from '@/shared/ui/file';
 import { Spinner } from '@/shared/ui/spinner';
 
-import { useCreateAvatar } from '../model/use-create-avatar';
+import { useCreateAvatarMutation } from '../model/use-create-avatar';
 
 interface AvatarFieldProps {
   value?: string;
@@ -20,7 +20,7 @@ export const AvatarField: FC<AvatarFieldProps> = ({
   email,
   onChange,
 }) => {
-  const { mutate, data, isPending } = useCreateAvatar();
+  const { mutate, data, isPending } = useCreateAvatarMutation();
 
   const handleFileSelect = async () => {
     const file = await selectFile('image/*');
@@ -28,9 +28,9 @@ export const AvatarField: FC<AvatarFieldProps> = ({
   };
 
   useEffect(() => {
-    onChange(data?.$id);
+    onChange(data?.id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data?.$id]);
+  }, [data?.id]);
 
   return (
     <Button

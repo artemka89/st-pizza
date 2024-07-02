@@ -1,6 +1,4 @@
-import { ProfileDto } from '@/shared/api/models/profile';
-
-import { Profile } from '../model/types';
+import { Profile, ProfileDto } from '../model/types';
 
 export const mapProfile = (data: ProfileDto): Profile => {
   return {

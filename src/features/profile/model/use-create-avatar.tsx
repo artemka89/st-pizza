@@ -2,9 +2,12 @@ import { useMutation } from '@tanstack/react-query';
 
 import { profileApi } from '@/shared/api/models/profile';
 
-export function useCreateAvatar() {
+export function useCreateAvatarMutation() {
   return useMutation({
     mutationKey: ['create-avatar'],
-    mutationFn: (file: File) => profileApi.createAvatar(file),
+    mutationFn: async (file: File) => {
+      const url = await profileApi.createAvatar(file);
+      return { id: url.$id };
+    },
   });
 }

@@ -1,4 +1,4 @@
-export interface Category {
+export interface PizzaCategory {
   id: string;
   name: string;
 }

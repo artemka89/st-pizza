@@ -14,14 +14,14 @@ import {
 import { Input } from '@/shared/ui/input';
 
 import { SignInFormSchema, SignInFormType } from '../model/sign-in-form-schema';
-import { useCreateMagicUrl } from '../model/use-create-magic-url';
+import { useCreateMagicUrlMutation } from '../model/use-create-magic-url';
 
 interface LoginFormProps {
   className?: string;
 }
 
 export const SignInForm: FC<LoginFormProps> = ({ className }) => {
-  const magicUrl = useCreateMagicUrl();
+  const magicUrl = useCreateMagicUrlMutation();
 
   const form = useForm<SignInFormType>({
     mode: 'all',

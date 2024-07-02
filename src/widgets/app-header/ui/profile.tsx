@@ -2,9 +2,11 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { LogOut, Settings, User } from 'lucide-react';
 
+import { ProfileAvatar } from '@/entities/profile';
 import { useGetUser } from '@/entities/user';
 import { useSignOut } from '@/features/auth';
 import { SignInButton } from '@/features/auth';
+import { ROUTES } from '@/shared/constants';
 import { cn } from '@/shared/lib/cn';
 import { Button } from '@/shared/ui/button';
 import {
@@ -16,8 +18,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/shared/ui/dropdown-menu';
-
-import { ProfileAvatar } from './profile-avatar';
 
 interface ProfileProps {
   className?: string;
@@ -66,7 +66,7 @@ export const Profile: FC<ProfileProps> = ({ className }) => {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem asChild className='cursor-pointer'>
-              <Link to={`/profile`} className='flex items-center'>
+              <Link to={ROUTES.PROFILE} className='flex items-center'>
                 <User className='mr-2 h-4 w-4' />
                 <span>Профиль</span>
               </Link>

@@ -5,7 +5,7 @@ import { useRemoveUser } from '@/entities/user';
 import { authApi } from '@/shared/api/models/auth';
 import { ROUTES } from '@/shared/constants';
 
-export function useSignOut() {
+export function useSignOutMutation() {
   const removeUser = useRemoveUser();
   const navigate = useNavigate();
   return useMutation({

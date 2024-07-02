@@ -1,8 +1,9 @@
 import { FC } from 'react';
 
-import { getUserDisplayName } from '@/entities/user';
 import { cn } from '@/shared/lib/cn';
 import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar';
+
+import { getDisplayName } from '../lib/get-display-name';
 
 interface ProfileAvatarProps {
   className?: string;
@@ -15,11 +16,11 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
   avatarUrl,
   className,
 }) => {
-  const avatar = getUserDisplayName(name);
+  const avatar = getDisplayName(name);
 
   return (
     <Avatar className={cn(className)}>
-      <AvatarImage src={avatarUrl} className='object-cover' />
+      <AvatarImage src={avatar ? avatarUrl : ''} className='object-cover' />
       <AvatarFallback>{avatar}</AvatarFallback>
     </Avatar>
   );

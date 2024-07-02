@@ -1,2 +1,5 @@
-export { getUserDisplayName } from './lib/get-user-display-name';
-export { useGetUser, useInvalidateUser, useRemoveUser } from './queries';
+export {
+  useGetUser,
+  useInvalidateUser,
+  useRemoveUserQuery as useRemoveUser,
+} from './queries';

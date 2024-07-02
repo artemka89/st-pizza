@@ -5,7 +5,7 @@ import { useInvalidateUser } from '@/entities/user';
 import { authApi } from '@/shared/api/models/auth';
 import { ROUTES } from '@/shared/constants';
 
-export function useSignIn() {
+export function useSignInMutation() {
   const invalidateUser = useInvalidateUser();
   const navigate = useNavigate();
   return useMutation({

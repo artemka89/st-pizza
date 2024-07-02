@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 import { authApi } from '@/shared/api/models/auth';
 import { ROUTES } from '@/shared/constants';
 
-export function useCreateMagicUrl() {
+export function useCreateMagicUrlMutation() {
   const navigate = useNavigate();
   return useMutation({
     mutationFn: (email: string) => authApi.createMagicUrlToken(email),

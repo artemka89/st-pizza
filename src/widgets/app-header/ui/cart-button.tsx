@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 
+import { ROUTES } from '@/shared/constants';
 import { cn } from '@/shared/lib/cn';
 
 interface CartButtonProps {
@@ -11,7 +12,7 @@ interface CartButtonProps {
 export const CartButton: FC<CartButtonProps> = ({ className }) => {
   return (
     <Link
-      to={'/'}
+      to={ROUTES.CART}
       className={cn(
         'relative mr-2 text-muted-foreground transition-colors hover:text-accent-foreground',
         className,

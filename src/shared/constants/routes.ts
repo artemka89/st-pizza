@@ -5,4 +5,5 @@ export const ROUTES = {
   CONFIRM: '/auth/confirm-email',
   PROFILE: '/profile',
   MENU: '/menu',
+  CART: '/cart',
 };

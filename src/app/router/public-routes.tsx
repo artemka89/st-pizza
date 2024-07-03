@@ -19,5 +19,12 @@ export const publicRoutes: RouteObject = {
         return { Component: MenuPage };
       },
     },
+    {
+      path: ROUTES.CART,
+      lazy: async () => {
+        const { CartPage } = await import('@/pages/cart-page');
+        return { Component: CartPage };
+      },
+    },
   ],
 };

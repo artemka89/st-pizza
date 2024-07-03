@@ -10,5 +10,7 @@ export const APPWRITE = {
   PIZZAS_BUCKET_ID: 'pizzas',
   PIZZA_CATEGORIES_COLLECTION_ID: 'pizza-categories',
 
+  CARTS_COLLECTION_ID: 'carts',
+
   VERIFY_HOST_URL: import.meta.env.VITE_VERIFY_HOST_URL,
 };

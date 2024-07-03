@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
+import { CartButton } from '@/features/cart';
 import { ThemeSwitcher } from '@/features/theme';
 
-import { CartButton } from './ui/cart-button';
 import { HeaderLayout } from './ui/header-layout';
 import { Logo } from './ui/logo';
 import { MainNav } from './ui/main-nav';

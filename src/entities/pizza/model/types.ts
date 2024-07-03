@@ -7,6 +7,7 @@ export interface Pizza {
   imageId: string;
   categories: PizzaCategory[];
   categoryIds: string[];
+  rating: number;
 }
 
 export interface PizzaOption {
@@ -28,6 +29,7 @@ export interface PizzaDto {
   category: string;
   description: string;
   categoryIds: string[];
+  rating: number;
   pizzaOptions: {
     $id: string;
     size: number;

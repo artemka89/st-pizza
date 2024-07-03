@@ -22,5 +22,6 @@ export const mapPizza = (data: PizzaDto): Pizza => {
     categories: mapCategories,
     options: mapOptions,
     categoryIds: data.categoryIds,
+    rating: data.rating,
   };
 };

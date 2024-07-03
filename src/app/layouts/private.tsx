@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { AuthorizedGuard } from '@/features/auth';
+import { AppFooter } from '@/widgets/app-footer';
 import { AppHeader } from '@/widgets/app-header';
 
 export const PrivateLayout: FC = () => {
@@ -11,6 +12,7 @@ export const PrivateLayout: FC = () => {
       <AuthorizedGuard>
         <Outlet />
       </AuthorizedGuard>
+      <AppFooter />
     </div>
   );
 };

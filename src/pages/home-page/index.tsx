@@ -7,6 +7,8 @@ import { PageLayout } from '@/shared/ui/layouts/page-layout';
 import { ProductCardLayout } from '@/shared/ui/layouts/product-card-layout';
 import { ProductListLayout } from '@/shared/ui/layouts/product-list-layout';
 
+import { AboutUs } from './ui/about-us';
+import { ContactUs } from './ui/contact-us';
 import { Hero } from './ui/hero';
 
 export const HomePage: FC = () => {
@@ -45,6 +47,8 @@ export const HomePage: FC = () => {
           />
         ))}
       </ProductListLayout>
+      <ContactUs />
+      <AboutUs />
     </PageLayout>
   );
 };

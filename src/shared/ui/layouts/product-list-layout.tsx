@@ -1,8 +1,17 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 
-export const ProductListLayout: FC<PropsWithChildren> = ({ children }) => {
+interface ProductListLayout {
+  columns?: number;
+  children: React.ReactNode;
+}
+
+export const ProductListLayout: FC<ProductListLayout> = ({
+  columns = 4,
+  children,
+}) => {
   return (
-    <div className='grid w-full grid-cols-product-card justify-center gap-4'>
+    <div
+      className={`my-10 grid grid-cols-[repeat(${columns},288px)] justify-center justify-items-center gap-4`}>
       {children}
     </div>
   );

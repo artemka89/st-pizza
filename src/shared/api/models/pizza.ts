@@ -25,6 +25,7 @@ const PizzaSchemaDto = z.object({
   categoryIds: z.string().array(),
   pizzaOptions: PizzaOptionDto.array(),
   pizzaCategories: PizzaCategoryDto.array(),
+  rating: z.number(),
 });
 
 export type PizzaDto = z.infer<typeof PizzaSchemaDto>;
@@ -47,5 +48,14 @@ export const pizzaApi = {
     );
 
     return PizzaSchemaDto.parse(pizza);
+  },
+  getBestRatingPizzas: async (amount: number) => {
+    const pizzas = await databases.listDocuments(
+      APPWRITE.DATABASE_ID,
+      APPWRITE.PIZZAS_COLLECTION_ID,
+      [Query.orderDesc('rating'), Query.limit(amount)],
+    );
+
+    return PizzaSchemaDto.array().parse(pizzas.documents);
   },
 };

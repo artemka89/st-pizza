@@ -3,18 +3,22 @@ import { FC } from 'react';
 import { cn } from '@/shared/lib/cn';
 
 interface ProductListLayout {
-  columns?: number;
+  columnsNumber?: 3 | 'auto';
   children: React.ReactNode;
 }
 
 export const ProductListLayout: FC<ProductListLayout> = ({
-  columns,
+  columnsNumber = 'auto',
   children,
 }) => {
   return (
     <div
       className={cn(
-        `my-10 grid w-full grid-cols-[repeat(${columns ? columns : 'auto-fill'},288px)] justify-center gap-4`,
+        `my-10 grid w-full justify-center gap-4`,
+        {
+          3: ['grid-cols-[repeat(3,288px)]'],
+          auto: ['grid-cols-[repeat(auto-fill,288px)]'],
+        }[columnsNumber],
       )}>
       {children}
     </div>

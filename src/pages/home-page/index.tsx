@@ -21,7 +21,7 @@ export const HomePage: FC = () => {
     <PageLayout>
       <Hero />
       <TypographyH2 align='center'>Лучший выбор</TypographyH2>
-      <ProductListLayout columns={3}>
+      <ProductListLayout columnsNumber={3}>
         {bestRatingPizzas.data?.map((pizza) => (
           <ProductCardLayout
             key={pizza.id}

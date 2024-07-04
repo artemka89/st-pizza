@@ -14,7 +14,7 @@ export const ProductListLayout: FC<ProductListLayout> = ({
   return (
     <div
       className={cn(
-        `grid w-full grid-cols-[repeat(${columns ?? 'auto-fill'},288px)] my-10 justify-center gap-4`,
+        `my-10 grid w-full grid-cols-[repeat(${columns ? columns : 'auto-fill'},288px)] justify-center gap-4`,
       )}>
       {children}
     </div>

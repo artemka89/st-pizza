@@ -17,9 +17,6 @@ export default {
       },
     },
     extend: {
-      gridTemplateColumns: {
-        'product-card': 'repeat(auto-fill, 288px)',
-      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

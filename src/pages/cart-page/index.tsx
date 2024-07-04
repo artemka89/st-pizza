@@ -16,7 +16,6 @@ export const CartPage: FC = () => {
   return (
     <PageLayout>
       <TypographyH2 align='center'>Корзина</TypographyH2>
-
       <CartItemList actions={<ClearCartButton />}>
         {cart.data?.items.map((item) => (
           <CartItem

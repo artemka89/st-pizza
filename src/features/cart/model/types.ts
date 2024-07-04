@@ -14,5 +14,4 @@ export interface CartItemType {
   weight: number;
   price: number;
   amount: number;
-  totalPrice?: number;
 }

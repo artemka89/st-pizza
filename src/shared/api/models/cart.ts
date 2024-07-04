@@ -23,7 +23,8 @@ const CartSchemaDto = z.object({
 
 type CartDto = z.infer<typeof CartSchemaDto>;
 
-export interface CreateCartItem {
+export interface CartItemType {
+  id: string;
   pizzaId: string;
   optionId: string;
   imageId: string;
@@ -31,7 +32,7 @@ export interface CreateCartItem {
   size: number;
   weight: number;
   price: number;
-  totalPrice?: number;
+  amount: number;
 }
 
 export interface UserCartPreferences {
@@ -59,18 +60,23 @@ export const cartApi = {
     return CartSchemaDto.parse(cart);
   },
 
-  addItem: async ({
-    id,
-    data,
-  }: {
-    id: string;
-    data: CreateCartItem;
-  }): Promise<CartDto> => {
+  createItem: async (data: CartItemType): Promise<CartDto> => {
+    const item = {
+      pizzaId: data.pizzaId,
+      optionId: data.optionId,
+      imageId: data.imageId,
+      name: data.name,
+      size: data.size,
+      weight: data.weight,
+      price: data.price,
+      amount: data.amount,
+    };
+
     const cart = await databases.updateDocument(
       APPWRITE.DATABASE_ID,
       APPWRITE.CARTS_COLLECTION_ID,
-      id,
-      { cartItems: [data] },
+      data.id,
+      { cartItems: [item] },
     );
     return CartSchemaDto.parse(cart);
   },

@@ -22,7 +22,7 @@ export const CartItem: FC<CartItemProps> = ({
   return (
     <div
       className={cn(
-        'my-10 flex w-full items-center justify-between',
+        'my-2 flex w-full items-center justify-between',
         cn(className),
       )}>
       <div className='flex items-center gap-4'>
